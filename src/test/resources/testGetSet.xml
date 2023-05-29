@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="dz-11">
+
+    <test name="Test only getters and setters">
+
+        <classes>
+            <class name="person.man.TestGetSetMan"/>
+            <class name="person.woman.TestGetSetWoman"/>
+        </classes>
+
+    </test>
+</suite>
