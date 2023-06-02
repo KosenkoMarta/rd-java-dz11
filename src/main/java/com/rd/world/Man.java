@@ -1,7 +1,7 @@
 package com.rd.world;
 
 public class Man extends Person {
-    private final int retirementAge = 60;
+    private final int retirementAge = 65;
 
     public Man(String firstName, String lastName, int age, Person partner) {
         super(firstName, lastName, age, partner);
@@ -9,7 +9,7 @@ public class Man extends Person {
 
     @Override
     public boolean isRetired() {
-        return getAge() > retirementAge;
+        return getAge() >= retirementAge;
 
     }
 

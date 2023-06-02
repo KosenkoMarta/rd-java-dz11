@@ -2,28 +2,30 @@ package person.woman;
 
 import com.rd.world.Man;
 import com.rd.world.Woman;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class DeregisterPartnershipTest {
     private Woman woman;
     private Man man;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void addNewWomenObject(){
-        woman = new Woman("Marta", "Kosenko", 62, null, "Kosenko");
-        man = new Man("Dmytro", "Shevchenko", 65, woman);
+        man = new Man("Dmytro", "Shevchenko", 64, woman);
+        woman = new Woman("Marta", "Shevchenko", 59, man, "Kosenko");
     }
 
     @Test
-    public void testRegisterPartnership(){
-    woman.deregisterPartnership();
-    // Перевіряємо, що партнерство зняте та партнер став рівним null
-    Assert.assertNull(woman.getPartner(), "Метод скасування реєстрації партнерства працює неправильно");
+    public void testDeregisterPartnership(){
+        SoftAssert softAssert = new SoftAssert();
+        woman.deregisterPartnership();
+        // Перевіряємо, що партнерство зняте та партнер став рівним null
+        softAssert.assertNull(woman.getPartner(), "Партнерство не було коректно скасовано. Очікувалось, що партнер буде null.");
 
-    // Перевіряємо, що прізвище повернулося до вихідного
-    Assert.assertEquals("Kosenko", woman.getLastName(), "Метод скасування реєстрації партнерства працює неправильно");
+        // Перевіряємо, що прізвище повернулося до вихідного
+        softAssert.assertEquals("Kosenko", woman.getLastName(), "Прізвище не було коректно повернуто після скасування партнерства. Очікувалось 'Kosenko'");
+        softAssert.assertAll();
 }
 
 }

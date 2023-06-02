@@ -10,33 +10,33 @@ public class TestGetSetMan {
     private Man man;
     private Woman woman;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void addNewMenObject(){
         man = new Man("Firstname", "Lastname", 45, woman);
         woman = new Woman("Firstname", "Lastname", 44, man, "Maidenname");
     }
 
-    @Test
+    @Test(groups = {"GettersTest"})
     public void testFirstname(){
         man.setFirstName("Dmytro");
-        Assert.assertEquals(man.getFirstName(), "Dmytro", "Ім'я не таке саме");
+        Assert.assertEquals(man.getFirstName(), "Dmytro", "Ім'я не встановлено правильно. Очікувалося 'Dmytro'.");
     }
 
-    @Test
+    @Test(groups = {"GettersTest"})
     public void testLastname(){
-        man.setFirstName("Shevchenko");
-        Assert.assertEquals(man.getFirstName(), "Shevchenko", "Прізвище не таке саме");
+        man.setLastName("Shevchenko");
+        Assert.assertEquals(man.getLastName(), "Shevchenko", "Призвище не встановлено правильно. Очікувалося 'Shevchenko'.");
     }
 
-    @Test
+    @Test(groups = {"GettersTest"})
     public void testAge(){
         man.setAge(66);
-        Assert.assertEquals(man.getAge(), 66, "Вік не такий самий");
+        Assert.assertEquals(man.getAge(), 66, "Вік встановлено невірно. Очікувалося '66'.");
     }
 
-    @Test
+    @Test(groups = {"GettersTest"})
     public void testPartner(){
         man.setPartner(woman);
-        Assert.assertEquals(man.getPartner(), woman, "Партнер не той самий");
+        Assert.assertEquals(man.getPartner(), woman, "Партнер не встановлений правильно. Очікувався партнер woman.");
     }
 }

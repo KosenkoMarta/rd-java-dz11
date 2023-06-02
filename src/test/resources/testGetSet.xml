@@ -3,6 +3,12 @@
 
     <test name="Test only getters and setters">
 
+        <groups>
+            <run>
+                <include name="GettersTest"/>
+            </run>
+        </groups>
+
         <classes>
             <class name="person.man.TestGetSetMan"/>
             <class name="person.woman.TestGetSetWoman"/>

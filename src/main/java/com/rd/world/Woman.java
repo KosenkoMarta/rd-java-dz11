@@ -11,7 +11,7 @@ public class Woman extends Person{
 
     @Override
     public boolean isRetired() {
-        return getAge() > retirementAge;
+        return getAge() >= retirementAge;
     }
 
 
